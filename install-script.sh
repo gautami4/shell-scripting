@@ -2,4 +2,12 @@
 
 # install mysql client
 
-dnf install mysql -y
+if [ id -u -eq 0 ]
+then
+    echo "Installing the MYSQL"
+
+dnf install mysqll -y
+
+else 
+    echo " No access to install"
+fi    
