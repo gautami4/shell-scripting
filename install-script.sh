@@ -9,7 +9,7 @@ then
     exit 1 #give any number other than zero
 fi    
 
-dnf install mysqll -y
+dnf install mysql -y
  
 if [ $? -ne 0 ]
 then
