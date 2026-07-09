@@ -2,13 +2,11 @@
 
 # install mysql client
 
-
-if [ $(id -u) -eq 0 ]
+USERID=$(id -u)
+if [ $USERID -ne 0 ]
 then
-    echo "Installing the MYSQL"
+    echo "You should have sudo access to execute the script"
+fi    
 
 dnf install mysqll -y
 
-else 
-    echo " No access to install"
-fi    
