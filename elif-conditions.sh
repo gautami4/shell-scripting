@@ -2,6 +2,8 @@
 
 #sample program for elif condition
 
+#Sequential Conditions (The if-elif-else Ladder)
+
 SCORE=$1
 
 if [ $SCORE -ge 90 ]
