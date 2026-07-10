@@ -4,27 +4,34 @@
 
 USERROOT=$(id -u)
 
+VALPACK(){
+    if [ $1 -eq 0 ]
+    then
+        echo "$2 ... installed successfully"
+    else
+        echo "$2 ... installation failure"
+    fi
+
+}
+
 if [ $USERROOT -ne 0  ]
 then
     echo "You are not a root user"
     exit 1
 else
-    dnf list installed mysql
+    dnf list installed ngnix
 fi
 
 
 if [ $? -eq 0 ]
 then
-    echo "Mysql already installed"
+    echo "ngnix already installed"
 else
-    dnf install mysql -y
+    dnf install ngnix -y
 
-    if [ $? -eq 0 ]
-    then
-        echo "mysql installed successfully"
-    else
-        echo " mysql installation failure"
-    fi
+    VALPACK $? ngnix
+
+    
 fi
 
 
