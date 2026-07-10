@@ -35,6 +35,7 @@ if [ $USERID -ne 0 ] ;then
     exit 1
 else
     for packages in $@ 
+    do
         dnf list installed $packages  
         installchk $? $packages
     done
