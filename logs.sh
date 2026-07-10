@@ -5,16 +5,16 @@
 # getting the user id 
 USERID=$(id -u)
 
-logs_folder="/var/log/shellscript-logs"
-log_fie=$(echo $0 | cut -d '.' -f1 )
-time_stamp=$(date +%Y-%m-%d-%H-%M-%S)
-log_file_name="$logs_folder/$log_file-$time_stamp.log"
+LOGS_FOLDER="/var/log/shellscript-logs"
+LOG_FILE=$(echo $0 | cut -d '.' -f1 )
+TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+LOG_FILE_NAME="$logs_folder/$log_file-$time_stamp.log"
 
 # write a function to do check whether package already installed
 
 installchk(){
     if [ $1 -eq 0 ]; then
-        echo  "$packages ... is already installed"  &>>log_file_name  
+        echo  "$packages ... is already installed"  &>>LOG_FILE_NAME 
     else
         dnf install $packages -y
         valchk $? $packages
@@ -26,11 +26,11 @@ installchk(){
 valchk(){
     
         if [ $1 -eq 0 ]; then
-            echo "$packages .. installed successfully at : $time_stamp" &>>log_file_name
+            echo "$packages .. installed successfully at : $TIMESTAMP" &>>LOG_FILE_NAME
             
         else
             
-            echo "$packages .. installation failed at : $time_stamp" &>>log_file_name
+            echo "$packages .. installation failed at : $TIMESTAMP" &>>LOG_FILE_NAME
         fi
 }   
 
