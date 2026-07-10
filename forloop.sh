@@ -5,15 +5,6 @@
 # getting the user id 
 USERID=$(id -u)
 
-if [ $USERID -ne 0 ] ;then
-    echo  "You are not root user so you dont have authority to install"
-    exit 1
-fi
-if [ $USERID -eq 0 ] ;then
-    dnf list installed mysql 
-    installchk $? MYSQL
-fi
-
 # write a function to do check whether package already installed
 
 installchk(){
@@ -37,3 +28,13 @@ valchk(){
             echo "$2 .. installation failed"
         fi
 }   
+
+
+if [ $USERID -ne 0 ] ;then
+    echo  "You are not root user so you dont have authority to install"
+    exit 1
+else
+    dnf list installed mysql 
+    installchk $? MYSQL
+fi
+
