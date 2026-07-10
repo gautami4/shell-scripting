@@ -4,6 +4,7 @@
 
 USERROOT=$(id -u)
 
+#function to check if pack installed or not
 VALPACK(){
     if [ $1 -eq 0 ]
     then
@@ -11,27 +12,25 @@ VALPACK(){
     else
         echo "$2 ... installation failure"
     fi
-
 }
+
 
 if [ $USERROOT -ne 0  ]
 then
     echo "You are not a root user"
     exit 1
-else
-    dnf list installed nginx
 fi
 
+    dnf list installed nginx
 
 if [ $? -eq 0 ]
-then
+then 
     echo "nginx already installed"
+    exit 1
 else
     dnf install nginx -y
 
     VALPACK $? nginx
-
-    
 fi
 
 
