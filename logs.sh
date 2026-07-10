@@ -14,7 +14,7 @@ LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 installchk(){
     if [ $1 -eq 0 ]; then
-        echo  "$packages ... is already installed"  &>>LOG_FILE_NAME 
+        echo  "$packages ... is already installed"  &>>$LOG_FILE_NAME 
     else
         dnf install $packages -y
         valchk $? $packages
@@ -26,11 +26,11 @@ installchk(){
 valchk(){
     
         if [ $1 -eq 0 ]; then
-            echo "$packages .. installed successfully at : $TIMESTAMP" &>>LOG_FILE_NAME
+            echo "$packages .. installed successfully at : $TIMESTAMP" &>>$LOG_FILE_NAME
             
         else
             
-            echo "$packages .. installation failed at : $TIMESTAMP" &>>LOG_FILE_NAME
+            echo "$packages .. installation failed at : $TIMESTAMP" &>>$LOG_FILE_NAME
         fi
 }   
 
