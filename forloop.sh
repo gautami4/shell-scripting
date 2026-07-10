@@ -10,18 +10,24 @@ if [ $USERID -ne 0 ] ;then
   exit 1
 fi
 
-# check whether package is already istalled
-if [ $? -eq 0 ] ;then
-    dnf list installed mysql 
-    if [ $? -eq 0 ] ; then
+# write a function to do validation
+
+valchk(){
+    if [ $1 -eq 0 ]; then
         echo  " mysql is already installed"
-        exit 1
+        
     else
         dnf install mysql -y
-        if [ $? -eq 0 ] ; then
+        if [ $1 -eq 0 ]; then
             echo "mysql installed successfully"
         else
             echo "mysql installation failed"
         fi
     fi
+ 
+}
+# check whether package is already istalled
+if [ $? -eq 0 ]; then
+    dnf list installed mysql 
+    valchk $?
 fi
