@@ -20,7 +20,9 @@ valchk(){
         dnf install mysql -y
         if [ $1 -eq 0 ]; then
             echo "mysql installed successfully"
+            echo "$1"
         else
+            echo "$1"
             echo "mysql installation failed"
         fi
     fi
