@@ -33,7 +33,7 @@ valchk(){
         fi
 }   
 # check whether package is already istalled
-if [ $? -eq 0 ]; then
+if [ $USERID -eq 0 ]; then
     dnf list installed mysql 
     installchk $? MYSQL
 fi
