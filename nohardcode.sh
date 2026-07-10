@@ -31,5 +31,8 @@ do
         
         VALPACK $? "Installing $packagess"
 
+    else "$packagess is already Installed" 
+    
+    fi    
 
 done
