@@ -7,7 +7,7 @@ USERID=$(id -u)
 
 logs_folder="/var/log/shellscript-logs"
 log_fie=$(echo $0 | cut -d '.' -f1 )
-time_stamp=$(date +%Y -%m-%d-%H-%M-%S)
+time_stamp=$(date +%Y-%m-%d-%H-%M-%S)
 log_file_name="$logs_folder/$log_file-$time_stamp.log"
 
 # write a function to do check whether package already installed
