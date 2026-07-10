@@ -24,7 +24,7 @@ installchk(){
 # write a function to do install packages
 valchk(){
     dnf install mysql -y
-        if [ $1 -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             echo "$2 .. installed successfully"
             
         else
