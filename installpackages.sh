@@ -2,9 +2,9 @@
 
 #check if root user is logged in
 
-UID=$(id -u)
+USERROOT=$(id -u)
 
-if [ $UID -ne 0  ]
+if [ $USERROOT -ne 0  ]
 then
     echo "You are not a root user"
     exit 1
