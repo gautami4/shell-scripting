@@ -19,17 +19,17 @@ then
     echo "You are not a root user"
     exit 1
 else
-    dnf list installed ngnix
+    dnf list installed mysql
 fi
 
 
 if [ $? -eq 0 ]
 then
-    echo "ngnix already installed"
+    echo "mysql already installed"
 else
-    dnf install ngnix -y
+    dnf install mysql -y
 
-    VALPACK $? ngnix
+    VALPACK $? mysql
 
     
 fi
