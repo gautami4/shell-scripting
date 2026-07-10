@@ -10,21 +10,18 @@ if [ $USERID -ne 0 ] ;then
   exit 1
 fi
 
-Validate(){
-    dnf list installed git 
-    if [ $1 -eq 0 ] ; then
-        echo  " $2 ..... already installed"
+# check whether package is already istalled
+if [ $? -eq 0 ] ;then
+    dnf list installed mysql 
+    if [ $? -eq 0 ] ; then
+        echo  " mysql is already installed"
         exit 1
     else
         dnf install mysql -y
-        if [ $1 -eq 0 ] ; then
-            echo "$2 ..... installed successfully"
+        if [ $? -eq 0 ] ; then
+            echo "mysql installed successfully"
         else
-            echo "$2 ..... installation failed"
+            echo "mysql installation failed"
         fi
     fi
-}
-# check whether package is already istalled
-if [ $? -eq 0 ] ;then
-    Validate $? git
 fi
