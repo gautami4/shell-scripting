@@ -1,9 +1,9 @@
 #!/bin/bash
 
-uuid=$(id -u)
+USERIDS=$(id -u)
 
 #check if user have root access
-if [ $? -ne 0 ]
+if [ $USERIDS -ne 0 ]
 then
     echo "you should have root access to run this script"
     exit 1
@@ -24,7 +24,6 @@ fi
     if [ $? -eq 0 ]
     then
         echo "nginx installation success"
-        exit 1
     else
         echo "ngix installation failure"
     fi        
