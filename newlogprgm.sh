@@ -19,13 +19,14 @@ then
     echo "nginx already installed"
 else
     dnf install nginx
+fi    
 
     if [ $? -eq 0 ]
     then
         echo "nginx installation success"
+        exit 1
     else
         echo "ngix installation failure"
     fi        
-fi
             
 
