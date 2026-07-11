@@ -26,11 +26,11 @@ installchk(){
 valchk(){
     
         if [ $1 -eq 0 ]; then
-            echo "$packages .. installed successfully at : $TIMESTAMP" &>>$LOG_FILE_NAME
+            echo "$packages .. installed successfully at : $TIMESTAMP"
             
         else
             
-            echo "$packages .. installation failed at : $TIMESTAMP" &>>$LOG_FILE_NAME
+            echo "$packages .. installation failed at : $TIMESTAMP" 
         fi
 }   
 
