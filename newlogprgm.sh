@@ -17,9 +17,9 @@ fi
 if [ $? -eq 0 ]
 then
     echo "nginx already installed"
+    exit 1
 else
-    dnf install nginx
-fi    
+    dnf install nginx -y
 
     if [ $? -eq 0 ]
     then
@@ -27,5 +27,5 @@ fi
     else
         echo "ngix installation failure"
     fi        
-            
+fi            
 
