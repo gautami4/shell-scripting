@@ -37,6 +37,7 @@ do
         dnf list install $packagess -y &>>$LOGFILENAME
         
         VALPACK $? "Installing $packagess"
+        exit 1
 
     else "$packagess is already Installed" 
     
