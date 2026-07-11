@@ -25,21 +25,21 @@ if [ $USERROOT -ne 0  ]
 then
     echo "You are not a root user"
     exit 1
-fi
-
-for packagess in $@
-do
-    dnf list installed $packagess
-    echo " status is : $? $packagess" 
+else
+    for packagess in $@
+    do
+        dnf list installed $packagess
+        echo " status is : $? $packagess" 
     
-    if [ $? -ne 0 ]
-    then
-        dnf list install $packagess -y  &>>$LOGFILENAME
+         if  [ $? -ne 0 ]
+        then
+            dnf list install $packagess -y  &>>$LOGFILENAME
         
-        VALPACK $? "Installing $packagess"
+              VALPACK $? "Installing $packagess"
 
-    else 
-        echo " $packagess is already Installed" 
-    fi    
+        else 
+            echo " $packagess is already Installed" 
+         fi    
 
-done
+    done
+fi
