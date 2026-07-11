@@ -30,7 +30,7 @@ fi
 for packagess in $@
 do
     dnf list installed $packagess
-
+    echo " status is : $?" 
     if [ $? -ne 0 ]
     then
         dnf list install $packagess -y  &>>$LOGFILENAME
@@ -38,7 +38,7 @@ do
         VALPACK $? "Installing $packagess"
 
     else 
-        echo "$packagess is already Installed" 
+        echo " $packagess is already Installed" 
     fi    
 
 done
