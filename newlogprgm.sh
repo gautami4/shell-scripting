@@ -6,6 +6,7 @@ userid=$(id -u)
 if [ $? -ne 0 ]
 then
     echo "you should have root access to run this script"
+    exit 1
 fi 
 
 if [ $? -eq 0 ]
