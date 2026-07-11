@@ -4,8 +4,8 @@
 
 USERROOT=$(id -u)
 
-LOGFOLDER=(/var/log/shellscript-logs)
-LOGFILE=$(ECHO $0 | CUT -D "." -f1)
+LOGFOLDER="/var/log/shellscript-logs"
+LOGFILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMPS=$(date)
 LOGFILENAME="$LOGFOLDER/$LOGFILE-$TIMESTAMP.log"
 
