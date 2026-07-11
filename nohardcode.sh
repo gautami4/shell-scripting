@@ -6,22 +6,23 @@ USERROOT=$(id -u)
 
 LOGFOLDER="/var/log/shellscript-logs"
 LOGFILE=$(echo $0 | cut -d "." -f1)
-TIMESTAMPS=$(date)
+TIMESTAMPS=$(date +%Y-%m-%d-%H-%M-%S)
 LOGFILENAME="$LOGFOLDER/$LOGFILE-$TIMESTAMPS.log"
 
 
 
 #function to check if pack installed or not
 VALPACK(){
-    if [ $1 -eq 0 ]
+    if [ $1 -ne 0 ]
     then
-        echo "$2 ...  success"
+        echo "$2 ...  failure"
+        exit 1
     else
         echo "$2 ... failure"
     fi
 }
 
-echo "The script started at :: $TIMESTAMPS" #&>>$LOGFILENAME
+echo "The script started at :: $TIMESTAMPS" &>>$LOGFILENAME
 
 if [ $USERROOT -ne 0  ]
 then
@@ -31,15 +32,16 @@ fi
 
 for packagess in $@
 do
-    dnf list installed $packagess
+    dnf list installed $packagess. &>>$LOGFILENAME
 
-    if [ $? -eq 0 ]
+    if [ $? -ne 0 ]
     then
-        echo "$packagess is already Installed" 
+    dnf list install $packagess -y     &>>$LOGFILENAME
+        VALPACK $? "Installing $packagess"
+      
     else
-        dnf list install $packagess -y #&>>$LOGFILENAME
-        VALPACK $? "Installing $packagess" 
-        
+         
+         echo "$packagess is already Installed"  
     fi    
 
 done
