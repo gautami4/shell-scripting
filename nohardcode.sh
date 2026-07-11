@@ -30,7 +30,7 @@ fi
 for packagess in $@
 do
     dnf list installed $packagess
-    echo " status is : $?" 
+    #echo " status is : $?" 
     if [ $? -ne 0 ]
     then
         dnf list install $packagess -y  &>>$LOGFILENAME
