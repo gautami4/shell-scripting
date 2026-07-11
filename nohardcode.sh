@@ -33,15 +33,13 @@ for packagess in $@
 do
     dnf list installed $packagess
 
-    if [ $? -ne 0 ]
+    if [ $? -eq 0 ]
     then
-        dnf list install $packagess -y #&>>$LOGFILENAME
-        
-        VALPACK $? "Installing $packagess"
-
-    else 
         echo "$packagess is already Installed" 
-    
+    else
+        dnf list install $packagess -y #&>>$LOGFILENAME
+        VALPACK $? "Installing $packagess" 
+        
     fi    
 
 done
