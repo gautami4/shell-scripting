@@ -28,10 +28,8 @@ then
 else
     for packagess in $@
     do
-        dnf list installed $packagess
-        echo " status is : $? $packagess" 
-    
-         if  [ $? -ne 0 ]
+        dnf list installed $packagess 
+        if  [ $? -ne 0 ]
         then
             dnf list install $packagess -y  &>>$LOGFILENAME
         
@@ -39,7 +37,6 @@ else
 
         else 
             echo " $packagess is already Installed" 
-         fi    
-
+        fi    
     done
 fi
