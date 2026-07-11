@@ -16,7 +16,7 @@ installchk(){
     if [ $1 -eq 0 ]; then
         echo  "$packages ... is already installed"  &>>$LOG_FILE_NAME 
     else
-        dnf install $packages -y
+        dnf install $packages -y &>>$LOG_FILE_NAME
         valchk $? $packages
     fi
  
@@ -41,7 +41,7 @@ if [ $USERID -ne 0 ] ;then
 else
     for packages in $@ 
     do
-        dnf list installed $packages  
+        dnf list installed $packages  &>>$LOG_FILE_NAME
         installchk $? $packages
     done
 fi
