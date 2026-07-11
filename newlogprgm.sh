@@ -1,6 +1,6 @@
 #!/bin/bash
 
-userid=$(id -u)
+uuid=$(id -u)
 
 #check if user have root access
 if [ $? -ne 0 ]
