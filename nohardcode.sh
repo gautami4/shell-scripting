@@ -38,8 +38,7 @@ do
         VALPACK $? "Installing $packagess"
 
     else 
-    echo "$packagess is already Installed" 
-    
+        echo "$packagess is already Installed" 
     fi    
 
 done
